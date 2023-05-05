@@ -20,7 +20,7 @@ import StarRating from '../client/src/components/reviews/StarRating.jsx';
 
 
 var mockReviewsMeta = {
-    "product_id": "71697",
+    "product_id": "1",
     "ratings": {
         "1": "56",
         "2": "22",
@@ -53,7 +53,7 @@ var mockReviewsMeta = {
 }
 
 var mockReviews = {
-    "product": "71697",
+    "product": "1",
     "page": 0,
     "count": 4,
     "results": [
@@ -160,7 +160,7 @@ describe('ReviewList Component', () => {
 
 describe('Reviews Component', () => {
   it('Renders Reviews component', () => {
-    render (<Reviews productId={71697}/>)
+    render (<Reviews productId={1}/>)
     const element = screen.getByTestId('reviews-1');
     expect(element).toBeInTheDocument();
   })

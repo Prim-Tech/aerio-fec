@@ -48,7 +48,7 @@ const App = () => {
       localStorage.setItem("outfitListDetails", JSON.stringify([]));
     }
     if (location.pathname === '/') {
-      updateSelectedProduct(71697);
+      updateSelectedProduct(1);
     } else {
       let newProductId = Number(location.pathname.slice(1));
       updateSelectedProduct(newProductId);

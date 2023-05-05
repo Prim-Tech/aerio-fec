@@ -48,7 +48,7 @@ describe('Product Gallery', () => {
 describe('Product Selected', () => {
   it('Renders the Product Selected component when passed product data', () => {
     const productDetails = {
-      "id": 71697,
+      "id": 1,
       "campus": "hr-rpp",
       "name": "Camo Onesie",
       "slogan": "Blend in to your crowd",
@@ -342,7 +342,7 @@ describe('Product Selected', () => {
 
   it('Renders size selector correctly when passed a product which is out of stock', () => {
     const outOfStockProductDetails = {
-        "id": 71697,
+        "id": 1,
         "campus": "hr-rpp",
         "name": "Camo Onesie",
         "slogan": "Blend in to your crowd",
@@ -493,7 +493,7 @@ describe('Product Selected', () => {
 
   it('Renders the product sale price if product is on sale', () => {
     const saleProductDetails = {
-        "id": 71697,
+        "id": 1,
         "campus": "hr-rpp",
         "name": "Camo Onesie",
         "slogan": "Blend in to your crowd",

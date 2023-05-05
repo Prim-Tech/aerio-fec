@@ -6,7 +6,7 @@ const APIKey = process.env.FEC_API_KEY;
 
 const getReviews = (req, res) => {
   var queryParams = req.query;
-  console.log('---------queryParams---------', queryParams)
+  // console.log('---------queryParams---------', queryParams)
   return axios.get(`${APIHostURL}/reviews`, {
     headers: {
       Authorization: APIKey
@@ -41,7 +41,7 @@ const getReviewsMeta = (req, res) => {
     "240585": 2
   }
   var exampleData = {
-    product_id: 71697,
+    product_id: 1,
     rating: 5,
     summary: "AAAAAAAAAAAAAAAAAA BEST PRODUCT EVER",
     "body": "I would reccomend this to everyone.",
@@ -96,11 +96,11 @@ const putReportReview = (req, res) => {
 }
 
 module.exports = {
-  getReviews: getReviews,
-  getReviewsMeta: getReviewsMeta,
-  postReview: postReview,
-  putHelpful: putHelpful,
-  putReportReview:putReportReview
+  getReviews,
+  getReviewsMeta,
+  postReview,
+  putHelpful,
+  putReportReview
 }
 
 

@@ -8,6 +8,7 @@ const APIKey = process.env.FEC_API_KEY;
 
 var ProductListInfo = async(req, res) => {
   var relatedProducts = req.query.relatedProducts;
+  console.log('relatedProducts: ', relatedProducts);
   var productId = req.query.productId;
   var listName = req.query.listName;
   var productIds;
@@ -48,7 +49,7 @@ var ProductListInfo = async(req, res) => {
         return products;
       })
       .catch((err) => {
-        console.log('Error in ProductListInfo: ', err);
+        console.log('Error in ProductListInfo: ' +productId, err);
       })
   }))
     .then((results) => {

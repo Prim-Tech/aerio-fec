@@ -1,6 +1,8 @@
 const express = require('express');
+require('dotenv').config();
 const path = require('path');
 const app = express();
+const port = process.env.PORT || 3000;
 
 const cart_api = require('./api_handlers/cart');
 const interactions_api = require('./api_handlers/interactions');
@@ -25,7 +27,7 @@ app.get('/products', (req, res) => {
       res.status(200).send(allProducts.data);
     })
     .catch(error => {
-      console.error('Error in getAllProducts: ', error);
+      console.error('Error in getAllProducts: ', error.message);
       res.status(404).send(error);
     });
 });
@@ -37,7 +39,7 @@ app.get('/products/:product_id', (req, res) => {
       res.status(200).send(productDetails.data)
     })
     .catch((error) => {
-      console.error('Error in getOneProduct: ', error);
+      console.error('Error in getOneProduct: ', error.message);
       res.status(404).send(error);
     })
 });
@@ -49,7 +51,7 @@ app.get('/products/:product_id/related', (req, res) => {
       res.status(200).send(relatedProducts.data)
     })
     .catch((error) => {
-      console.error('Error in getRelated: ', error);
+      console.error('Error in getRelated: ', error.message);
       res.status(404).send(error);
     })
 });
@@ -71,7 +73,7 @@ app.get('/products/:product_id/styles', (req, res) => {
       res.status(200).send(productStyles.data)
     })
     .catch((error) => {
-      console.error('Error in getStyles: ', error);
+      console.error('Error in getStyles: ', error.message);
       res.status(404).send(error);
     })
 });
@@ -106,7 +108,7 @@ app.get('/reviews', (req, res) => {
       res.status(200).send(reviews.data);
     })
     .catch(error => {
-      console.error('Error in getting reviews: ', error);
+      console.error('Error in getting reviews: ', error.message);
       res.status(404).send(error);
     });
 });
@@ -117,7 +119,7 @@ app.get('/reviews/meta', (req, res) => {
       res.status(200).send(reviewsMeta.data);
     })
     .catch(error => {
-      console.error('Error in getting reviews meta: ', error);
+      console.error('Error in getting reviews meta: ', error.message);
       res.status(404).send(error);
     });
 });
@@ -128,7 +130,7 @@ app.post('/reviews', (req, res) => {
       res.status(201).send('Success posting review');
     })
     .catch(error => {
-      console.error('Error posting Review: ', error);
+      console.error('Error posting Review: ', error.message);
       res.status(404).send(error);
     });
 });
@@ -139,7 +141,7 @@ app.put('/reviews/helpful', (req, res) => {
       res.status(204).send('Marked review helpful');
     })
     .catch(error => {
-      console.error('Error marking Review helpful: ', error);
+      console.error('Error marking Review helpful: ', error.message);
       res.status(404).send(error);
     });
 });
@@ -150,7 +152,7 @@ app.put('/reviews/report', (req, res) => {
       res.status(204).send('Reported review')
     })
     .catch(error => {
-      console.error('Error reporting Review: ', error);
+      console.error('Error reporting Review: ', error.message);
       res.status(404).send(error);
     });
 });
@@ -165,7 +167,7 @@ app.get('/qa/questions', (req, res) => {
       res.status(200).send(questions.data);
     })
     .catch(error => {
-      console.error('Error in getProductQuestions: ', error);
+      console.error('Error in getProductQuestions: ', error.message);
       res.status(404).send(error);
     });
 });
@@ -176,7 +178,7 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
       res.status(200).send(answers.data);
     })
     .catch(error => {
-      console.error('Error in getProductAnswers: ', error);
+      console.error('Error in getProductAnswers: ', error.message);
       res.status(404).send(error);
     });
 });
@@ -188,7 +190,7 @@ app.post('/qa/questions', (req, res) => {
       res.status(201).send('Your question has been submitted!');
     })
     .catch(error => {
-      console.error('Error in AddProductQuestion: ', error);
+      console.error('Error in AddProductQuestion: ', error.message);
       res.status(404).send(error);
     });
 });
@@ -200,7 +202,7 @@ app.post('/qa/questions/:question_id/answers', (req, res) => {
       res.status(201).send('Your answer has been submitted!');
     })
     .catch(error => {
-      console.error('Error in AddProductQuestion: ', error);
+      console.error('Error in AddProductQuestion: ', error.message);
       res.status(404).send(error);
     });
 });
@@ -211,7 +213,7 @@ app.put('/qa/questions/:question_id/helpful', (req, res) => {
       res.status(204).end();
     })
     .catch(error => {
-      console.error('Error marking question helpful: ', error);
+      console.error('Error marking question helpful: ', error.message);
       res.status(404).send(error);
     });
 });
@@ -223,7 +225,7 @@ app.put('/qa/questions/:question_id/report', (req, res) => {
       res.status(204).end();
     })
     .catch(error => {
-      console.error('Error reporting question:', error);
+      console.error('Error reporting question:', error.message);
       res.status(404).send(error);
     });
 });
@@ -234,7 +236,7 @@ app.put('/qa/answers/:answer_id/helpful', (req, res) => {
       res.status(204).end();
     })
     .catch(error => {
-      console.error('Error marking answer helpful: ', error);
+      console.error('Error marking answer helpful: ', error.message);
       res.status(404).send(error);
     });
 });
@@ -246,7 +248,7 @@ app.put('/qa/answers/:answer_id/report', (req, res) => {
       res.status(204).end();
     })
     .catch(error => {
-      console.error('Error reporting answer:', error);
+      console.error('Error reporting answer:', error.message);
       res.status(404).send(error);
     });
 });
@@ -257,7 +259,7 @@ app.post('/interactions', (req, res)=> {
     res.status(201).end();
   })
   .catch(error => {
-    console.error('Error in interaction:', error);
+    console.error('Error in interaction:', error.message);
     res.status(422).send(error);
   });
 })
@@ -276,6 +278,6 @@ app.get('/:product_id', (req, res) => {
   });
 });
 
-app.listen(3000, function(){
-  console.log('Connected to server on port 3000!');
+app.listen(port, function(){
+  console.log(`Connected to server: http://localhost:${port}`);
 });

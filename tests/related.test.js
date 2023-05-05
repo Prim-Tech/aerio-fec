@@ -12,7 +12,7 @@ afterEach(() => {
   cleanup();
 });
 
-const productId = 71697;
+const productId = 1;
 const setRelatedProductFeatures = (item) => {
   return relatedProductFeatures;
 }
@@ -57,7 +57,7 @@ const productCards = [
 
 describe('RelatedProducts', () => {
   it('renders related products component', () => {
-    render(<RelatedProducts productId={71697} relatedProductFeatures={[]} productFeatures={[]} myOutfit={{outfits: []}} relatedProducts={[]} productCards={[]}/>);
+    render(<RelatedProducts productId={1} relatedProductFeatures={[]} productFeatures={[]} myOutfit={{outfits: []}} relatedProducts={[]} productCards={[]}/>);
     expect(screen.getByText('Related Products')).toBeInTheDocument();
     expect(screen.getByText('Your Outfit')).toBeInTheDocument();
     expect(screen.getByText('Add to Outfit')).toBeInTheDocument();
